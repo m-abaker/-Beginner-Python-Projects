@@ -1,0 +1,27 @@
+import random
+
+def guess(x):
+    start=1
+    end=1000
+    i=1
+    guess_number = random.randint(start,end)
+    print(f"My guess Number is {guess_number}")
+    if guess_number == x:
+        print(f"Congartulation Computer Guesed your Number {guess_number} from {i} try")
+
+    else:
+        while guess_number != x:
+            print(guess_number)
+            if guess_number < x:
+                start = guess_number+1
+                print(f'Strat:{start}, End:{end}')
+                guess_number = random.randint(start, end)
+                i+=1
+            else:
+                # guess_number > x:
+                end = guess_number-1
+                print(f'Strat:{start}, End:{end}')
+                guess_number = random.randint(start, end)
+                i+=1
+        print(f"Congartulation Computer Guesed your Number {guess_number} from {i} try")
+guess(8)
