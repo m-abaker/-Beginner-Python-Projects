@@ -1,0 +1,14 @@
+import random
+result = 0
+
+while result != 1:
+    you = input("Your choise? Rock[r], Paper[p], Scissors[s]\n".lower())
+    computer = random.choice(["r","s","p"])
+    print(f'Computer= {computer}, You= {you}')
+    if you == computer:
+        print('its Tie!!')
+    elif (you == 'r' and computer == 's') or (you == 's' and computer == 'p') or (you == 'p' and computer == 'r'):
+        print(" :) You WON!! :)")
+        result = 1
+    else:
+        print("You Lost!! \n :(")
