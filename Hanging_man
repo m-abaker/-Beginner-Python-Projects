@@ -1,0 +1,40 @@
+from words import words
+import random
+from m import lives_visual_dict
+
+def get_word(words):
+    word=random.choice(words)
+    gused=''
+    print(word)
+    for x in word:
+        gused+='-'
+    print(gused)
+    return word,gused
+
+def hangman():
+    letters=[]
+    lives=7
+    word,gused=get_word(words)
+    while '-' in gused:
+        i=0
+        l = input(f'You have {lives} Lives, Plz input your gused letter: Until now you entered letters: {letters},\n')
+        if l not in letters:
+            letters.append(l)
+            while i < len(word):
+                if l in word[i]:
+                    gused=gused[:i]+gused[i].replace(gused[i],l)+gused[i+1:]
+                i+=1
+            print(gused)
+        else:
+            print("This Letter already you entered, Plz try again.")
+        if l not in word:
+            lives-=1
+            print(lives_visual_dict[lives])
+        if lives == 0:
+            print('SORRY YOU DIED, THANKS FOR TRING')
+            break
+    if lives != 0:
+        print(f'***************************************************\nYAYA! :) YOU GUSED THE WORD ITS "{gused}"')
+
+if __name__== '__main__':
+    hangman()
