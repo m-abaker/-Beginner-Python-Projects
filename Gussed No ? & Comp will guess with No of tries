@@ -1,0 +1,18 @@
+import random
+
+def guess(x):
+    start = 1
+    end = 100
+    i = 0
+    feedback = ''
+    while feedback != 'c':
+        guess = random.randint(start,end)
+        i+=1
+        feedback = input(f"is {guess},Press High[H], Low[l] or Correct[c]?".lower())
+        if feedback == 'h':
+            end = guess - 1
+        elif feedback == 'l':
+            start = guess +1
+
+    print(f"Yay, Congrulations. The computer sugessed your Number {guess} after {i} tries")
+guess(88)
